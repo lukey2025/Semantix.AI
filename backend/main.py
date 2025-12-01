@@ -12,10 +12,10 @@ load_dotenv()
 # 初始化 FastAPI 应用
 app = FastAPI(title="Semantix MVP API", version="1.0.0")
 
-# 配置 CORS，允许来自 localhost:3000 的请求
+# 配置 CORS，允许来自所有域名的请求
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
