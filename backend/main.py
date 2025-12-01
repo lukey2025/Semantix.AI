@@ -150,7 +150,11 @@ def call_deepseek_api(original_text: str) -> Dict[str, Any]:
         
         # 解析响应
         result = response.json()
-        return result["choices"][0]["message"]["content"]
+        # DeepSeek API 返回的是 JSON 字符串，需要进一步解析
+        ai_response = result["choices"][0]["message"]["content"]
+        # 将 JSON 字符串解析为 Python 字典
+        import json
+        return json.loads(ai_response)
         
     except Exception as e:
         # 如果 API 调用失败，返回模拟响应
